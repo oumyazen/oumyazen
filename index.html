@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز صحتي أم يزن للطب البديل</title>
+    <title>مركز صحتي - الواحات الأغواط للطب البديل</title>
     <!-- استدعاء مكتبة Tailwind CSS للتصميم -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- استدعاء خط تجوال العربي -->
@@ -14,166 +14,361 @@
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: #f0fdf4; /* خلفية خضراء فاتحة جداً تناسب الطابع الطبي */
+            background-color: #f0fdf4; /* خلفية خضراء فاتحة */
+            scroll-behavior: smooth;
         }
         .glass-effect {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(5, 150, 105, 0.1);
         }
-        .gradient-text {
-            background: linear-gradient(to right, #059669, #10b981);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* تأثير الشريط المتحرك */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: #064e3b; /* أخضر غامق */
+            color: white;
+            padding: 8px 0;
+            white-space: nowrap;
+        }
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation: ticker 35s linear infinite; /* زيادة الوقت لجعل الحركة أبطأ للقراءة */
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(100%, 0, 0); } /* للغة العربية الاتجاه معكوس */
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <!-- رأس الصفحة (Header) -->
-    <header class="fixed top-0 w-full z-50 glass-effect shadow-sm">
+    <!-- شريط المعلومات المتحرك (تم التحديث) -->
+    <div class="ticker-wrap fixed top-0 z-50">
+        <div class="ticker-move">
+            <div class="ticker-item"><i class="fa-brands fa-whatsapp ml-2"></i>للحجز والاستفسار: 0662430479</div>
+            <div class="ticker-item"><i class="fa-solid fa-location-dot ml-2"></i>مركز صحتي - الواحات الأغواط</div>
+            <div class="ticker-item">أفضل خدمات الحجامة والطب البديل للنساء والرجال</div>
+            <div class="ticker-item"><i class="fa-solid fa-phone ml-2"></i>رقم الهاتف: 0662430479</div>
+        </div>
+    </div>
+
+    <!-- القائمة العلوية -->
+    <header class="fixed top-10 w-full z-40 glass-effect shadow-sm transition-all">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <i class="fa-solid fa-leaf text-emerald-600 text-2xl"></i>
-                <h1 class="text-xl font-bold text-emerald-800">مركز صحتي <span class="text-sm font-normal text-emerald-600 block">أم يزن للطب البديل</span></h1>
+                <div>
+                    <h1 class="text-lg font-bold text-emerald-800 leading-tight">مركز صحتي</h1>
+                    <span class="text-xs font-medium text-emerald-600 block">الواحات - الأغواط</span>
+                </div>
             </div>
-            <a href="#booking" class="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md hover:bg-emerald-700 transition">
-                احجز الآن
+            <!-- قائمة التنقل المخفية في الجوال -->
+            <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+                <a href="#about" class="hover:text-emerald-600">عن المركز</a>
+                <a href="#services" class="hover:text-emerald-600">خدماتنا</a>
+                <a href="#booking" class="hover:text-emerald-600">حجز موعد</a>
+            </nav>
+            <a href="#booking" class="bg-emerald-600 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-md hover:bg-emerald-700 transition flex items-center gap-2">
+                <i class="fa-regular fa-calendar-plus"></i>
+                <span class="hidden sm:inline">احجز الآن</span>
             </a>
         </div>
     </header>
 
-    <!-- قسم الترحيب (Hero Section) -->
-    <section class="pt-24 pb-12 px-4 text-center">
-        <div class="max-w-md mx-auto">
-            <div class="mb-6 relative inline-block">
-                <!-- مكان للصورة أو الشعار - يمكن استبدال الرابط أدناه بصورة المركز -->
-                <div class="w-32 h-32 mx-auto bg-emerald-100 rounded-full flex items-center justify-center border-4 border-white shadow-lg overflow-hidden">
-                   <i class="fa-solid fa-hands-holding-circle text-6xl text-emerald-500"></i>
+    <!-- قسم الترحيب الرئيسي -->
+    <section class="pt-32 pb-12 px-4 text-center bg-gradient-to-b from-emerald-50 to-white">
+        <div class="max-w-3xl mx-auto">
+            <div class="mb-6 relative inline-block animate-bounce-slow">
+                <div class="w-32 h-32 mx-auto bg-white rounded-full flex items-center justify-center border-4 border-emerald-200 shadow-xl overflow-hidden p-2">
+                    <!-- أيقونة معبرة -->
+                   <i class="fa-solid fa-hand-holding-heart text-6xl text-emerald-500"></i>
                 </div>
             </div>
-            <h2 class="text-3xl font-extrabold mb-2 text-emerald-900">صحتك هي أولويتنا</h2>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-                نقدم لكم أفضل خدمات الطب البديل والحجامة والعلاجات الطبيعية بإشراف مختصين.
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-emerald-900 leading-tight">
+                استعد توازنك الطبيعي <br> مع <span class="text-emerald-600">مركز صحتي</span>
+            </h2>
+            <p class="text-gray-600 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
+                نقدم رعاية صحية متكاملة تجمع بين أصالة الطب النبوي ودقة الممارسة الحديثة للرجال والنساء في الواحات الأغواط.
             </p>
             
-            <!-- أزرار التواصل السريع -->
-            <div class="flex justify-center gap-4 mb-8">
-                <a href="https://www.facebook.com/people/%D9%85%D8%B1%D9%83%D8%B2-%D8%B5%D8%AD%D8%AA%D9%8A-%D9%84%D8%A7%D9%85-%D9%8A%D8%B2%D9%86-%D9%84%D9%84%D8%B7%D8%A8-%D8%A7%D9%84%D8%A8%D8%AF%D9%8A%D9%84/61555612874324/" target="_blank" class="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-xl shadow-lg hover:bg-blue-700 transition w-full justify-center">
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <span>فيسبوك</span>
+            <div class="flex flex-col sm:flex-row justify-center gap-3">
+                <a href="#services" class="px-6 py-3 bg-white text-emerald-700 border border-emerald-200 rounded-xl font-bold hover:bg-emerald-50 transition shadow-sm">
+                    تصفح الخدمات
                 </a>
-                <!-- زر الواتساب العام -->
-                <button onclick="openWhatsAppDirect()" class="flex items-center gap-2 bg-green-500 text-white px-5 py-3 rounded-xl shadow-lg hover:bg-green-600 transition w-full justify-center">
+                <button onclick="openWhatsAppDirect()" class="px-6 py-3 bg-emerald-600 text-white rounded-xl font-bold shadow-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
                     <i class="fa-brands fa-whatsapp text-xl"></i>
-                    <span>تواصل معنا</span>
+                    تواصل معنا
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- قسم الحجز (Booking Form) -->
-    <section id="booking" class="px-4 pb-20">
-        <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-emerald-100">
-            <div class="bg-emerald-600 p-4 text-center">
-                <h3 class="text-white font-bold text-xl"><i class="fa-regular fa-calendar-check ml-2"></i>حجز موعد جديد</h3>
-                <p class="text-emerald-100 text-sm mt-1">املاء البيانات وسيتم تحويلك للواتساب لتأكيد الحجز</p>
+    <!-- قسم تعريف الطب البديل -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="الطب البديل" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+                </div>
+                <div class="md:w-1/2 text-right">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-8 h-1 bg-emerald-500 rounded-full"></span>
+                        <h3 class="text-emerald-600 font-bold uppercase text-sm">عن الطب البديل</h3>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">العودة إلى الطبيعة من أجل صحة أفضل</h2>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        الطب البديل هو نهج علاجي يعتمد على الممارسات الطبيعية والتقليدية لتعزيز قدرة الجسم على الشفاء الذاتي. نحن في مركز صحتي نؤمن بأن العلاج يبدأ من الداخل، ونستخدم وسائل آمنة وفعالة خالية من الآثار الجانبية الكيميائية.
+                    </p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> تحسين الدورة الدموية</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> تخفيف الآلام المزمنة والتوتر</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> تعزيز المناعة الطبيعية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات (تم التحديث بالكامل) -->
+    <section id="services" class="py-16 bg-emerald-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-emerald-900 mb-2">خدماتنا العلاجية</h2>
+                <p class="text-gray-600">مجموعة متكاملة من العلاجات الطبيعية لصحتك</p>
+            </div>
+
+            <!-- شبكة الخدمات -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                
+                <!-- خدمة 1: الحجامة الطبية -->
+                <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition service-card border border-emerald-100">
+                    <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-4 text-red-600 mx-auto">
+                        <i class="fa-solid fa-droplet text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">الحجامة الطبية</h3>
+                    <p class="text-gray-500 text-center text-sm mb-4">
+                        جلسات حجامة طبية متخصصة (رطبة، جافة، متزحلقة) بأدوات معقمة للتخلص من السموم وتنشيط الدورة الدموية.
+                    </p>
+                </div>
+
+                <!-- خدمة 2: الابر الصينية -->
+                <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition service-card border border-emerald-100">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600 mx-auto">
+                        <i class="fa-solid fa-syringe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">الإبر الصينية</h3>
+                    <p class="text-gray-500 text-center text-sm mb-4">
+                        علاج دقيق لمسارات الطاقة في الجسم لتخفيف الآلام المزمنة، الصداع، ومشاكل الأعصاب.
+                    </p>
+                </div>
+
+                <!-- خدمة 3: الفصد -->
+                <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition service-card border border-emerald-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-4 text-purple-600 mx-auto">
+                        <i class="fa-solid fa-heart-pulse text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">الفصد</h3>
+                    <p class="text-gray-500 text-center text-sm mb-4">
+                        إجراء طبي قديم وفعال لسحب كمية محددة من الدم لعلاج حالات معينة مثل ارتفاع ضغط الدم واحتقان الدم.
+                    </p>
+                </div>
+
+                <!-- خدمة 4: التداوي بدودة العلق -->
+                <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition service-card border border-emerald-100">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4 text-green-800 mx-auto">
+                        <i class="fa-solid fa-worm text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">التداوي بدودة العلق</h3>
+                    <p class="text-gray-500 text-center text-sm mb-4">
+                        علاج طبيعي فعال يستخدم إنزيمات العلق لتحسين تدفق الدم، علاج الدوالي، ومشاكل الجلد والمفاصل.
+                    </p>
+                </div>
+                
+                 <!-- خدمة 5: التداوي بسم النحل -->
+                 <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition service-card border border-emerald-100">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-4 text-yellow-600 mx-auto">
+                        <i class="fa-solid fa-bugs text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">التداوي بسم النحل</h3>
+                    <p class="text-gray-500 text-center text-sm mb-4">
+                        تقنية علاجية متقدمة لتعزيز المناعة وعلاج الالتهابات، الروماتيزم، وآلام المفاصل المزمنة.
+                    </p>
+                </div>
+
+                 <!-- خدمة 6: الموسكا -->
+                 <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition service-card border border-emerald-100">
+                    <div class="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4 text-orange-600 mx-auto">
+                        <i class="fa-solid fa-fire text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">الموسكا (الكي)</h3>
+                    <p class="text-gray-500 text-center text-sm mb-4">
+                        علاج تقليدي بالحرارة (الكي) لنقاط محددة في الجسم لعلاج الألم والبرودة وأمراض معينة.
+                    </p>
+                </div>
+
+                <!-- خدمة 7: التدليك بجميع انواعه -->
+                <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition service-card border border-emerald-100">
+                    <div class="w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center mb-4 text-teal-600 mx-auto">
+                        <i class="fa-solid fa-hands text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">التدليك بجميع أنواعه</h3>
+                    <p class="text-gray-500 text-center text-sm mb-4">
+                        جلسات مساج علاجي، استرخائي، رياضي، وتدليك للأقدام لفك التشنجات وتخفيف التوتر.
+                    </p>
+                </div>
+
+                <!-- خدمة 8: الفوطة النارية -->
+                <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition service-card border border-emerald-100">
+                    <div class="w-14 h-14 bg-rose-100 rounded-full flex items-center justify-center mb-4 text-rose-600 mx-auto">
+                        <i class="fa-solid fa-fire-flame-curved text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">الفوطة النارية</h3>
+                    <p class="text-gray-500 text-center text-sm mb-4">
+                        تقنية علاجية حرارية ممتازة لتدفئة الجسم، طرد البرودة، وتخفيف آلام الظهر والرقبة.
+                    </p>
+                </div>
+
+                <!-- خدمة 9: الشمع الهوبي للأذن -->
+                <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition service-card border border-emerald-100">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mb-4 text-indigo-600 mx-auto">
+                        <i class="fa-solid fa-ear-listen text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">الشمع الهوبي للأذن</h3>
+                    <p class="text-gray-500 text-center text-sm mb-4">
+                        طريقة طبيعية وآمنة لتنظيف الأذن من الشمع المتراكم، تخفيف طنين الأذن، وتحسين السمع.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الحجز -->
+    <section id="booking" class="px-4 py-16 bg-white relative">
+        <div class="absolute inset-0 bg-emerald-50 opacity-50 transform -skew-y-3 origin-top-left z-0 h-full w-full"></div>
+        <div class="relative z-10 max-w-md mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-emerald-100">
+            <div class="bg-emerald-700 p-6 text-center">
+                <h3 class="text-white font-bold text-2xl">حجز موعد</h3>
+                <p class="text-emerald-100 text-sm mt-2 opacity-90">املأ الاستمارة وسنقوم بتحضير الحجز لك على الواتساب</p>
             </div>
             
-            <form id="bookingForm" class="p-6 space-y-4" onsubmit="sendBookingToWhatsApp(event)">
+            <form id="bookingForm" class="p-6 space-y-5" onsubmit="sendBookingToWhatsApp(event)">
                 
-                <!-- الاسم -->
                 <div>
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="firstName">الاسم</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
-                            <i class="fa-regular fa-user"></i>
-                        </span>
-                        <input type="text" id="firstName" required class="w-full pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" placeholder="الاسم الأول">
-                    </div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">الاسم الثلاثي</label>
+                    <input type="text" id="firstName" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" placeholder="الاسم الكامل">
                 </div>
 
-                <!-- اللقب -->
                 <div>
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="lastName">اللقب</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
-                            <i class="fa-solid fa-signature"></i>
-                        </span>
-                        <input type="text" id="lastName" required class="w-full pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" placeholder="اسم العائلة">
-                    </div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">السن</label>
+                    <input type="number" id="age" required min="1" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" placeholder="العمر">
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">الجنس</label>
+                    <select id="gender" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+                        <option value="ذكر">ذكر</option>
+                        <option value="أنثى">أنثى</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">نوع الخدمة المطلوبة</label>
+                    <select id="serviceType" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+                        <option value="غير محدد">اختر الخدمة...</option>
+                        <option value="الحجامة الطبية">الحجامة الطبية</option>
+                        <option value="الإبر الصينية">الإبر الصينية</option>
+                        <option value="الفصد">الفصد</option>
+                        <option value="التداوي بدودة العلق">التداوي بدودة العلق</option>
+                        <option value="التداوي بسم النحل">التداوي بسم النحل</option>
+                        <option value="الموسكا">الموسكا (الكي)</option>
+                        <option value="التدليك بجميع أنواعه">التدليك بجميع أنواعه</option>
+                        <option value="الفوطة النارية">الفوطة النارية</option>
+                        <option value="الشمع الهوبي للأذن">الشمع الهوبي للأذن</option>
+                        <option value="استشارة">استشارة عامة</option>
+                    </select>
                 </div>
 
-                <!-- السن -->
-                <div>
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="age">السن</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
-                            <i class="fa-solid fa-cake-candles"></i>
-                        </span>
-                        <input type="number" id="age" required min="1" max="100" class="w-full pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" placeholder="العمر بالسنوات">
-                    </div>
-                </div>
-
-                <!-- زر الإرسال -->
-                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-emerald-700 transition transform active:scale-95 flex justify-center items-center gap-2 mt-4">
-                    <span>إرسال طلب الحجز</span>
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-emerald-700 transition transform active:scale-[0.98] flex justify-center items-center gap-2 mt-4">
+                    <span>تأكيد الحجز عبر واتساب</span>
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
                 </button>
             </form>
         </div>
     </section>
 
-    <!-- الفوتر -->
-    <footer class="bg-gray-800 text-white text-center py-6 mt-8">
-        <p class="mb-2">مركز صحتي أم يزن للطب البديل</p>
-        <div class="flex justify-center gap-4 mt-4">
-            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
-            <a href="https://www.facebook.com/people/%D9%85%D8%B1%D9%83%D8%B2-%D8%B5%D8%AD%D8%AA%D9%8A-%D9%84%D8%A7%D9%85-%D9%8A%D8%B2%D9%86-%D9%84%D9%84%D8%B7%D8%A8-%D8%A7%D9%84%D8%A8%D8%AF%D9%8A%D9%84/61555612874324/" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-facebook text-xl"></i></a>
-        </div>
-        <p class="text-xs text-gray-500 mt-4">&copy; 2024 جميع الحقوق محفوظة</p>
-    </footer>
+    <!-- قسم أرقام التواصل (تم التحديث في الأسفل) -->
+    <section class="py-12 bg-gray-900 text-white text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8 text-emerald-400">للاستفسار والتواصل المباشر</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                <!-- كرت الرقم الأول -->
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-emerald-500 transition group">
+                    <i class="fa-solid fa-phone-volume text-3xl text-emerald-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-semibold mb-2">الرقم الرئيسي</h3>
+                    <a href="tel:0662430479" class="text-2xl font-mono dir-ltr block hover:text-emerald-400">0662430479</a>
+                </div>
+                
+                <!-- كرت الفيسبوك (تم تحديث الرابط ليكون عاماً مؤقتاً) -->
+                 <a href="https://www.facebook.com/" target="_blank" class="bg-blue-900 p-6 rounded-xl border border-blue-800 hover:bg-blue-800 transition group">
+                    <i class="fa-brands fa-facebook text-3xl text-white mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-semibold mb-2">تابعنا على فيسبوك</h3>
+                    <span class="text-sm text-blue-200">مركز صحتي - الواحات الأغواط</span>
+                </a>
+            </div>
 
-    <!-- سكربت الجافاسكربت للتعامل مع الواتساب -->
+            <div class="mt-8 pt-8 border-t border-gray-800 text-gray-500 text-sm">
+                <p>&copy; 2024 مركز صحتي - الواحات الأغواط للطب البديل. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Button for WhatsApp -->
+    <a href="javascript:void(0)" onclick="openWhatsAppDirect()" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition z-50 animate-bounce">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- سكربت الجافاسكربت -->
     <script>
-        // ! هام جداً: قم بتغيير هذا الرقم إلى رقم الهاتف الخاص بالمركز !
-        // يجب أن يكون الرقم بالصيغة الدولية وبدون علامة + أو أصفار في البداية
-        // مثال: 966500000000 أو 213500000000
-        const centerPhoneNumber = "+213660482338"; 
+        // ! هام: تم تحديث رقم الهاتف
+        const centerPhoneNumber = "213662430479"; // الجزائر - الواحات الأغواط
 
         function sendBookingToWhatsApp(e) {
             e.preventDefault();
 
-            // جلب البيانات من الحقول
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
+            const name = document.getElementById('firstName').value;
             const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const service = document.getElementById('serviceType').value;
 
-            // تجهيز نص الرسالة
             const message = `*طلب حجز موعد جديد* 🌿%0a` +
                             `------------------%0a` +
-                            `👤 *الاسم:* ${firstName} ${lastName}%0a` +
+                            `👤 *الاسم:* ${name}%0a` +
                             `🎂 *السن:* ${age} سنة%0a` +
+                            `⚧ *الجنس:* ${gender}%0a` +
+                            `🩺 *الخدمة:* ${service}%0a` +
                             `------------------%0a` +
-                            `يرجى تأكيد الموعد المتاح.`;
+                            `هل يمكن تأكيد الموعد؟`;
 
-            // إنشاء رابط الواتساب
             const whatsappUrl = `https://wa.me/${centerPhoneNumber}?text=${message}`;
-
-            // فتح الرابط في نافذة جديدة
-            if(centerPhoneNumber === "0660482338") {
-                alert("يرجى تعديل رقم الهاتف في كود الموقع أولاً ليعمل الحجز بشكل صحيح.");
-            } else {
-                window.open(whatsappUrl, '_blank');
-            }
+            window.open(whatsappUrl, '_blank');
         }
 
         function openWhatsAppDirect() {
-            if(centerPhoneNumber === "+213662430479") {
-                alert("يرجى تعديل رقم الهاتف في كود الموقع أولاً.");
-            } else {
-                window.open(`https://wa.me/${centerPhoneNumber}`, '_blank');
-            }
+            window.open(`https://wa.me/${centerPhoneNumber}`, '_blank');
         }
     </script>
 </body>
